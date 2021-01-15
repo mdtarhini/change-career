@@ -1,0 +1,47 @@
+// small screeen detector
+export const SET_IS_SMALL_SCREEN = "SET_IS_SMALL_SCREEN";
+
+//auth stuff
+export const SIGN_UP_SUCCESS = "SIGN_UP_SUCCESS";
+export const SIGN_UP_FAILED = "SIGN_UP_FAILED";
+
+export const SIGN_IN_SUCCESS = "SIGN_IN_SUCCESS";
+export const SIGN_IN_FAILED = "SIGN_IN_FAILED";
+
+export const PASSWORD_RESET_SUCCESS = "PASSWORD_RESET_SUCCESS";
+export const PASSWORD_RESET_FAILED = "PASSWORD_RESET_FAILED";
+
+export const USER_LOADED = "USER_LOADED";
+
+export const SIGN_OUT_SUCCESS = "SIGN_OUT_SUCCESS";
+
+export const USER_DOING_SOMETHING = "USER_DOING_SOMETHING";
+
+export const USER_EDITED = "USER_EDITED";
+export const USER_NOT_EDITED = "USER_NOT_EDITED";
+
+//posts
+export const SET_NEW_POST_VISIBILITY = "SET_NEW_POST_VISIBILITY";
+export const ADD_POST = "ADD_POST";
+export const POST_FETCHED = "POST_FETCHED";
+export const POST_DELETED = "POST_DELETED";
+export const CLEAR_POSTS = "CLEAR_POSTS";
+
+export const COMMENT_FETCHED = "COMMENT_FETCHED";
+export const COMMENT_DELETED = "COMMENT_DELETED";
+export const CLEAR_COMMENTS = "CLEAR_COMMENTS";
+export const SET_EXPANDED_POST = "SET_EXPANDED_POST";
+
+//notifications
+export const NOTIFICATION_FETCHED = "NOTIFICATION_FETCHED";
+export const NOTIFICATION_DELETED = "NOTIFICATION_DELETED";
+
+//messages
+export const CONTACT_FETCHED = "CONTACT_FETCHED";
+export const SELECT_CHAT = "SELECT_CHAT";
+
+//USERS
+export const FETCH_USER_PROFILE = "FETCH_USER_PROFILE";
+
+//Jobs
+export const FETCH_JOB_STATS = "FETCH_JOB_STATS";

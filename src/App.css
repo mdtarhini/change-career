@@ -1,38 +1,615 @@
-.App {
-  text-align: center;
+/* --------------------------------------------------------------------------------------- */
+/* Variables */
+/* --------------------------------------------------------------------------------------- */
+:root {
+  --muted-color: rgb(121, 119, 119);
+  --accent-color: rgba(0, 108, 196, 1);
+  --divider-color: rgba(190, 190, 190, 0.4);
+  --sidebar-color: rgb(225, 226, 228);
+  --message-footer-height: 50px;
+  --navbar-height: 66px;
+  --message-contact-info-height: 50px;
+  --message-sidebar-width: 320px;
+  --home-background: #f0f2f5;
+}
+/* --------------------------------------------------------------------------------------- */
+/* --------------------------------------------------------------------------------------- */
+
+/* --------------------------------------------------------------------------------------- */
+/* Body */
+/* --------------------------------------------------------------------------------------- */
+html,
+body {
+  overflow-x: hidden;
+  background-color: var(--home-background);
+}
+/* --------------------------------------------------------------------------------------- */
+/* --------------------------------------------------------------------------------------- */
+
+/* --------------------------------------------------------------------------------------- */
+/* Navbar */
+/* --------------------------------------------------------------------------------------- */
+.navbar {
+  background: rgb(0, 50, 156);
+  background: linear-gradient(
+    45deg,
+    rgba(0, 50, 156, 1) 0%,
+    rgba(0, 108, 196, 1) 100%
+  );
+  height: var(--navbar-height);
+  padding: 1em;
+  width: 100vw;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.navigation {
+  margin-right: 0.8em;
+  padding: 0.5em 1em;
+}
+.navigation .icon {
+  color: var(--home-background);
+  font-size: large;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.navigation-selected {
+  position: relative;
+}
+.navigation-selected::after {
+  content: "";
+  width: 100%;
+  height: 3px;
+  background-color: white;
+  border-radius: 8px;
+  position: absolute;
+  left: 0px;
+  bottom: -10px;
+}
+
+.navigation:hover {
+  cursor: pointer;
+  opacity: 90%;
+}
+
+.navbar-avatar {
+  background-color: tomato;
+}
+
+.navbar-logo {
+  font-size: x-large;
+  color: white;
+}
+.navbar-avatar:hover {
+  cursor: pointer;
+}
+
+/* --------------------------------------------------------------------------------------- */
+/* Post */
+/* --------------------------------------------------------------------------------------- */
+.category-navigation-select {
+  font-weight: bold;
+  font-size: large;
+  width: 100%;
+}
+.custom-card {
+  width: 60%;
+  border: none;
+  margin-bottom: 15px;
+  box-shadow: rgba(0, 0, 0, 0.08) 0px 5px 15px 0px;
+}
+@media screen and (max-width: 992px) {
+  .custom-card {
+    width: 80%;
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+@media screen and (max-width: 600px) {
+  .custom-card {
+    width: 95%;
+  }
+}
+.add-or-edit-post-error {
+  margin-top: 15px;
+}
+.post-header {
+  font-size: large;
+  font-weight: bold;
+}
+.post-time {
+  font-size: small;
+  color: var(--muted-color);
+}
+.post-author,
+.author {
+  font-size: small;
+  color: var(--muted-color);
+}
+.site-badge-count-4 .ant-badge-count {
+  background-color: #fff;
+  color: rgb(53, 53, 53);
+  box-shadow: none;
+}
+
+.list-of-posts,
+.list-of-notifications {
+  background-color: var(--home-background);
+  position: fixed;
+  width: 100vw;
+  overflow-x: hidden;
+  overflow-y: auto;
+  height: calc(100% - var(--navbar-height));
+  top: var(--navbar-height);
+  padding: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+.like-button {
+  padding: 0px;
+  color: var(--muted-color);
+}
+
+.like-button:hover {
+  color: var(--accent-color);
+  background-color: inherit;
+}
+.like-button-liked {
+  color: var(--accent-color);
+}
+.comment-list {
+  padding: 15px;
+  border-top: none;
+  background-color: white;
+}
+.comments-divider {
+  margin: 0px !important;
+}
+.comment-text {
+  font-size: "0.8em";
+}
+.comments-header {
+  display: flex;
+  justify-content: flex-end;
+}
+.highlighted-comment-text {
+  background-color: rgba(245, 245, 70, 0.562);
+  border-radius: 5px;
+  padding: 15px;
+}
+.createPost {
+  position: fixed;
+  width: 50px;
+  height: 50px;
+  bottom: 15px;
+  right: 15px;
+}
+.add-comment {
+  margin: 15px 0px;
+  width: 100%;
+}
+textarea {
+  resize: none;
+}
+.AddPost-select,
+.tag-selection {
+  width: 100%;
+}
+.add-poll-div {
+  padding: 15px;
+  margin-bottom: 15px;
+  background-color: var(--home-background);
+  border-radius: 8px;
+}
+
+.add-poll-input,
+.add-poll-add-option,
+.poll-button,
+.poll-result {
+  width: 300px;
+  max-width: 60vw;
+}
+.poll-remove-option {
+  font-size: small;
+  color: red;
+}
+.add-poll-time-input {
+  width: 70px;
+}
+.poll-button,
+.poll-result {
+  border-radius: 20px;
+}
+
+.poll-result {
+  padding: 4px 15px;
+  color: white;
+  text-align: center;
+}
+.poll-button:hover {
+  background-color: var(--accent-color);
+  color: white;
+}
+.poll-div {
+  margin: 15px 0px;
+}
+.poll-info {
+  color: var(--muted-color);
+  font-size: small;
+}
+/* --------------------------------------------------------------------------------------- */
+/* --------------------------------------------------------------------------------------- */
+
+/* --------------------------------------------------------------------------------------- */
+/* Profile */
+/* --------------------------------------------------------------------------------------- */
+
+.profile-name {
+  font-size: x-large;
+  font-weight: bold;
+}
+.profile-description {
+  color: var(--muted-color);
+  font-size: small;
+}
+.profile-summary-menu {
+  margin: 15px 5px 20px 5px;
+}
+.career-change-diagram {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 60px;
+}
+.career-change-diagram span {
+  font-size: large;
+}
+.career-change-diagram .cell {
+  background-color: var(--accent-color);
+  color: white;
+  border-radius: 8px;
+  padding: 20px;
+}
+.chart-div {
+  height: 60vh;
+}
+
+/* --------------------------------------------------------------------------------------- */
+/* --------------------------------------------------------------------------------------- */
+
+/* --------------------------------------------------------------------------------------- */
+/* Notifications */
+/* --------------------------------------------------------------------------------------- */
+.notifications-card {
+  padding: 0px;
+  background-color: white;
+}
+.notification {
+  width: 100%;
+  background-color: whitesmoke;
+  padding: 20px;
+  padding-bottom: 5px;
+}
+.notification-unseen {
+  border-left: rgba(245, 167, 153, 0.651) 10px solid;
+  padding-left: 10px;
+}
+.invalid-notification {
+  width: 100%;
+  padding: 20px;
+  color: var(--muted-color);
+}
+.notification:hover {
+  cursor: pointer;
+}
+.notifications-title {
+  font-size: x-large;
+}
+.notification-time {
+  font-size: small;
+  color: var(--muted-color);
+}
+.notification-avatar {
+  background-color: var(--accent-color);
+}
+/* --------------------------------------------------------------------------------------- */
+/* --------------------------------------------------------------------------------------- */
+
+/* --------------------------------------------------------------------------------------- */
+/* Messaging */
+/* --------------------------------------------------------------------------------------- */
+
+textarea::-webkit-scrollbar {
+  background-color: transparent;
+}
+
+.break {
+  flex-basis: 100%;
+  height: 3px;
+}
+
+.messagesDate > span {
+  color: grey;
+  font-weight: 300;
+  font-size: small;
+}
+
+.message {
+  position: relative;
+  padding: 7px 20px;
+  color: white;
+  background: #0b93f6;
+  border-radius: 25px;
+  min-width: 50px;
+  max-width: 49%;
+}
+
+.from-me {
+  margin-right: 20px;
+  margin-left: auto;
+}
+
+.from-them {
+  margin-left: 20px;
+  background: #e5e5ea;
+  color: black;
+}
+
+.chat-in-list {
+  padding: 10px;
+  border-bottom: 1px solid var(--divider-color);
+  width: 100%;
+}
+.selected {
+  background-color: var(--accent-color);
+  color: white;
+}
+.chat-in-list:hover {
+  cursor: pointer;
+}
+.chats-div {
+  background-color: var(--sidebar-color);
+  overflow: auto;
+  height: 100%;
+  position: fixed;
+  top: var(--navbar-height);
+  z-index: 200;
+  border-right: 1px solid var(--divider-color);
+  width: var(--message-sidebar-width);
+}
+.chats-div-small {
+  width: 100vw;
+}
+.messaging-div {
+  margin: 0;
+}
+.chat-in-list-name {
+  font-weight: bold;
+}
+.one-chat-div {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding: 10px 0px;
+}
+.one-chat-wrapper {
+  overflow-y: auto;
+  height: calc(100% - var(--message-footer-height));
+}
+.one-chat-wrapper-small {
+  overflow-y: auto;
+  margin-top: var(--message-contact-info-height);
+  height: calc(
+    100% - var(--message-footer-height) - var(--message-contact-info-height)
+  );
+}
+.messaging-right {
+  background-color: white;
+  word-wrap: break-word;
+  position: fixed;
+  top: var(--navbar-height);
+  height: calc(100% - var(--navbar-height));
+  width: calc(100% - var(--message-sidebar-width));
+  left: var(--message-sidebar-width);
+}
+.messaging-right-small {
+  width: 100%;
+  left: 0px;
+}
+.chat-input-div {
+  background-color: var(--sidebar-color);
+  border-top: 1px solid var(--divider-color);
+  position: absolute;
+  display: flex;
+  bottom: 0px;
+  min-height: var(--message-footer-height);
+  width: 100%;
+  padding: 5px;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+.chat-input {
+  border-radius: 20px;
+  margin-right: 3px;
+  resize: none;
+}
+.message-contact-info-div {
+  background-color: var(--sidebar-color);
+  border-bottom: 1px solid var(--divider-color);
+  position: absolute;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding-left: 5px;
+  padding-right: 5px;
+  height: var(--message-contact-info-height);
+}
+
+.chat-in-list-sent {
+  color: black;
+}
+.chat-in-list-received {
+  color: black;
+}
+.no-chat-selected {
+  width: 100%;
+  text-align: center;
+  margin-top: 30px;
+  font-size: large;
+  font-weight: 300;
+}
+
+/* --------------------------------------------------------------------------------------- */
+/* --------------------------------------------------------------------------------------- */
+
+/* --------------------------------------------------------------------------------------- */
+/* Sign up and in */
+/* --------------------------------------------------------------------------------------- */
+.setup-div {
+  text-align: center;
+  margin-top: var(--navbar-height);
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  width: 100vw;
+  overflow: auto;
+}
+.setup-div-title {
+  font-size: xx-large;
+  font-weight: 500;
+  margin-bottom: 30px;
+}
+.signup-message-card {
+  background-color: var(--accent-color);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  justify-content: center;
+}
+.sign-up-card-carousel {
+  font-size: xx-large;
+  font-family: "Montserrat", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  text-rendering: optimizeLegibility;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.signup-message-logo-div {
+  position: relative;
+  margin-bottom: 15px;
+}
+.signup-message-logo {
+  font-size: 20vh;
+  color: white;
+}
+.signup-message-logo-text {
+  margin: auto;
+  position: absolute;
+  top: 30%;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  font-size: 2vh;
+  color: white;
+  font-family: "Comfortaa", cursive;
+}
+.cancel-setup {
+  position: fixed;
+  top: 5px;
+  right: 5px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.sign-up-card {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
+.already-have {
+  margin-top: 15px;
+}
+.continue-signup {
+  text-align: left;
+  background-color: white;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+.continue-signup-field {
+  width: 100%;
+  text-align: left;
+}
+
+.continue-signup-next-button {
+  border-radius: 0px;
+  margin-top: 15px;
+  background-color: #fafafa;
+}
+.continue-signup-next-button:hover {
+  background-color: var(--accent-color);
+  color: whitesmoke;
+  border: none;
+}
+.required::after {
+  content: " *";
+  color: red;
+}
+.form-label {
+  background-color: yellow;
+  height: 100%;
+}
+.experince-form-set {
+  margin: 5px;
+  background-color: #fafafa;
+  padding: 5px;
+  position: relative;
+  border-radius: 5px;
+}
+.experince-form-set-checkbox {
+  margin-top: -100px;
+  padding: 0px;
+}
+.experince-form-set-delete {
+  margin-bottom: 15px;
+}
+.continue-signup-skip {
+  color: #e65153;
+}
+.continue-signup-save {
+  color: #0b93f6;
+}
+.continue-signup-action:hover {
+  color: var(--muted-color);
+}
+/* --------------------------------------------------------------------------------------- */
+/* --------------------------------------------------------------------------------------- */
+
+/* --------------------------------------------------------------------------------------- */
+/* Common */
+/* --------------------------------------------------------------------------------------- */
+
+.common-dropdown {
+  min-width: 100px;
+}
+.common-dropdown-text {
+  margin: 15px;
+  font-weight: bold;
+}
+.common-dropdown-icon {
+  color: var(--muted-color);
+  font-size: large;
+  padding: 3px;
+  border-radius: 8px;
+}
+.common-dropdown-icon:hover {
+  background-color: rgba(128, 128, 128, 0.377);
+}
+
+.empty-div {
+  height: calc(100vh - var(--navbar-height));
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--home-background);
+}
+/* --------------------------------------------------------------------------------------- */
+/* --------------------------------------------------------------------------------------- */
